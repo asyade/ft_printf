@@ -16,13 +16,15 @@
 static void		free_old(t_list **lst, char *out)
 {
 	t_list		*pr;
+	t_list		*fptr;
 
 	pr = *lst;
 	while (pr)
 	{
-		free(pr->content);
-		free(pr);
+		fptr = pr;
 		pr = pr->next;
+		free(fptr->content);
+		free(fptr);
 	}
 	free(out);
 	*lst = NULL;

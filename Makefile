@@ -24,7 +24,7 @@ SRC = src/ft_printf.c \
 
 OBJ = $(patsubst $(PATH_SRC)/%.c, obj/%.o, $(SRC))
 
-FLAGS = -g -Wall -Wextra -Werror -g3
+FLAGS = -g -Wall -Wextra -Werror
 
 LIBS = -L./libft -lft
 
@@ -57,6 +57,7 @@ fclean : clean
 re : fclean all
 
 valgrind : all
-	valgrind --leak-check=full ./21sh
+	gcc -g main.c -L. -lftprintf -I includes/
+	valgrind --leak-check=full ./a.out
 
 .PHONY : valgrind clean fclean re
